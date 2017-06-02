@@ -7,7 +7,9 @@ from PIL import ImageFont
 from PIL import ImageDraw
 import random
 
-font = ImageFont.truetype("/usr/share/fonts/truetype/freefont/FreeMonoBold.ttf", 24)
+font = ImageFont.truetype("/usr/share/fonts/truetype/freefont/FreeMonoBold.ttf", 20)
+pointFont = ImageFont.truetype("/usr/share/fonts/truetype/freefont/FreeMonoBold.ttf", 40)
+
 
 usage = "makebingo.py [options] gridContentFile1.csv [gridContentFile2.csv]"
 parser = OptionParser(usage = usage)
@@ -60,6 +62,8 @@ class GridSlot:
         _, textH = font.getsize(texts[0])
         for tInd, text in enumerate(texts):
             draw.text((0, tInd * textH * (1 + INTERLINE)),text,(0,0,0),font=font)
+
+        draw.text((.8 * w, .8 * h),str(self.points),(0,0,0),font=pointFont)
 
         return output
 
